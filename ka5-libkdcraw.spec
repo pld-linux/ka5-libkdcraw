@@ -1,15 +1,15 @@
-%define		kdeappsver	20.12.3
+%define		kdeappsver	21.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		libkdcraw
 Summary:	Libkdcraw
 Name:		ka5-%{kaname}
-Version:	20.12.3
+Version:	21.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	0a4dfb54666a30774dae5b73334bd8b3
+# Source0-md5:	612e6dae8e79f3932c000a897c47ee46
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel
@@ -69,12 +69,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %ghost %{_libdir}/libKF5KDcraw.so.5
+%ghost %{_libdir}/libKF5KDcraw.so.5
 %attr(755,root,root) %{_libdir}/libKF5KDcraw.so.*.*.*
+%{_datadir}/qlogging-categories5/libkdcraw.categories
 
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/KF5/KDCRAW
 %{_includedir}/KF5/libkdcraw_version.h
 %{_libdir}/cmake/KF5KDcraw
-%attr(755,root,root) %{_libdir}/libKF5KDcraw.so
+%{_libdir}/libKF5KDcraw.so
