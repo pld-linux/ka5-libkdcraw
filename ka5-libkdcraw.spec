@@ -32,6 +32,13 @@ http://www.libraw.org.
 This library is used by kipi-plugins, digiKam and others kipi host
 programs.
 
+%description -l pl.UTF-8
+Libkdcraw jest interfejsem C++ wokół biblioteki LibRaw używanej do
+dekodowania plików RAW. Więcej informacji o LibRaw można znaleźć
+na http://www.libraw.org.
+
+Tej biblioteki używają kipi-plugins, digiKam i inne programy kipi.
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kpname}
