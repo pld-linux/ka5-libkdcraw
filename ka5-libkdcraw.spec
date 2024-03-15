@@ -1,26 +1,26 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.01.95
+%define		kdeappsver	23.08.4
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		libkdcraw
 Summary:	Libkdcraw
 Name:		ka5-%{kaname}
-Version:	24.01.95
-Release:	0.1
+Version:	23.08.4
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	14c94053d68ceaf3cbdb58dbea1f0e22
+Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	64261c94cf2db2b7e100a321a464fb80
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel
 BuildRequires:	cmake >= 3.20
-BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	libraw-devel >= 0.18
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -37,8 +37,8 @@ programs.
 
 %description -l pl.UTF-8
 Libkdcraw jest interfejsem C++ wokół biblioteki LibRaw używanej do
-dekodowania plików RAW. Więcej informacji o LibRaw można znaleźć na
-http://www.libraw.org.
+dekodowania plików RAW. Więcej informacji o LibRaw można znaleźć
+na http://www.libraw.org.
 
 Tej biblioteki używają kipi-plugins, digiKam i inne programy kipi.
 
@@ -63,8 +63,7 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	-DQT_MAJOR_VERSION=6
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 %ninja_build -C build
 
 %if %{with tests}
@@ -84,12 +83,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%ghost %{_libdir}/libKDcrawQt6.so.5
-%attr(755,root,root) %{_libdir}/libKDcrawQt6.so.*.*
-%{_datadir}/qlogging-categories6/libkdcraw.categories
+%ghost %{_libdir}/libKF5KDcraw.so.5
+%attr(755,root,root) %{_libdir}/libKF5KDcraw.so.*.*.*
+%{_datadir}/qlogging-categories5/libkdcraw.categories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KDcrawQt6
-%{_libdir}/cmake/KDcrawQt6
-%{_libdir}/libKDcrawQt6.so
+%{_includedir}/KF5/KDCRAW
+%{_libdir}/cmake/KF5KDcraw
+%{_libdir}/libKF5KDcraw.so
